@@ -6,13 +6,6 @@ from collections import OrderedDict
 import numpy as np
 
 
-def named_children(model):
-    memo = set()
-    for name, module in model._modules.items():
-        if module is not None and module not in memo:
-            memo.add(module)
-            yield name, module
-
 
 def named_apply(module, fn, mod_name=None):
     for name, layer in module.named_children():
